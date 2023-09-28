@@ -13,9 +13,13 @@
   background: $black;
 
   text-align: center;
+
   .thumbs {
     max-width: 1280px;
     margin: 0 auto;
+    @include bp(m) {
+      display: flex;
+    }
   }
   h2 {
     color: $white;
@@ -44,7 +48,7 @@
     }
     &:hover {
       background: $off-white;
-      transform: scale(1.05);
+      transform: translateY(-5px);
     }
   }
 }
