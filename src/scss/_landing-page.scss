@@ -1,0 +1,106 @@
+$header-bg-color:#142850;
+$header-text-color:white;
+$article-bg-color:#27496d;
+$article-text-color:white;
+$button-text-color:white;
+$button-text-hover-color:#00a8cc;
+
+.landing-page {
+  margin: 0;
+  padding: 0;
+  font-family: "Raleway", serif;
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2.4em;
+  }
+  p {
+    font-size: 1.6em;
+  }
+  a {
+    text-decoration: none;
+  }
+  .lp-button {
+    border-radius: 5px;
+    color: $button-text-color;
+    transition: 0.25s ease;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    font-weight: bold;
+    text-decoration: underline;
+    &:hover {
+      color: $button-text-hover-color;
+      text-decoration: none;
+    }
+  }
+  .fixed-lg {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 90%;
+  }
+  article {
+    padding: 45px 0 100px;
+    background: $article-bg-color;
+    color: $article-text-color;
+    text-align: center;
+    a {
+      color: $article-text-color;
+      transition: all 0.2s ease-in;
+      &:hover {
+        color: darken($article-text-color, 10%);
+      }
+    }
+    .button {
+      display: block;
+      font-size: 2.4em;
+      margin-bottom: 75px;
+    }
+  }
+  header {
+    padding:0 0 75px;
+    @include bp(s) {
+      padding: 75px 0;
+    }
+   
+    background: $header-bg-color;
+    text-align: center;
+    color: $header-text-color;
+    position: relative;
+    .cta {
+      font-size: 1.6em;
+      display: inline-block;
+    }
+  }
+
+  footer {
+    a {
+      color: black;
+    }
+    .inner {
+      text-align: center;
+      p {
+        font-size: 12px;
+      }
+    }
+  }
+  a.logo {
+    border: 1px solid black;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 404px;
+    width: 100%;
+    height:auto;
+    background: white;
+    #logo-facepic {
+      flex-basis: 37.5%;
+      background-image: url("/wp-content/themes/thebeuschers/images/header-image.jpg");
+      background-size: cover;
+      background-position: center bottom;
+    }
+    img {
+      width: 62.5%;
+      height:auto;
+    }
+  }
+}

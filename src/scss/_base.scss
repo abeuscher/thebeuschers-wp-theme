@@ -1,0 +1,184 @@
+@include no-padding("left");
+@include no-padding("right");
+@include no-padding("top");
+@include no-padding("bottom");
+@include no-padding("all");
+
+ul.hmenu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+.right {
+  text-align: right;
+}
+.padding-top {
+  padding-top: $gutter-width;
+}
+.padding-bottom {
+  padding-bottom: $gutter-width;
+}
+body {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: $header-font;
+  }
+  font-family: $body-font;
+  color: $body-text-color;
+  font-weight: 300;
+  opacity: 1;
+  //background:url("/wp-content/themes/thebeuschers/images/bg-needle.jpg") no-repeat center;
+  background-size: cover;
+  background-position: fixed;
+  a {
+    text-decoration: none;
+  }
+}
+a.button,
+button,
+.button {
+  background: $green;
+  color: $off-white;
+  padding: 0.75em 1.5em;
+  display: inline-block;
+  transition: all 0.25s ease-in;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  &.cta {
+    margin-top: 1em;
+  }
+  &.bottom-cta {
+    padding: 0.25em 0.5em;
+    font-size: 0.9em;
+    margin: 0 0.5em;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &:hover {
+    border-color: $light-blue;
+    background: $light-blue;
+    color: $white;
+  }
+  &.main {
+    font-size: 1.2em;
+
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+    &:hover {
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.7);
+    }
+  }
+}
+.centered {
+  text-align: center;
+}
+.marquee {
+  padding-bottom: 20%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: $white;
+  background-position: bottom center;
+  .container {
+    padding-top: 5em;
+    text-align: center;
+  }
+  h1,
+  h2 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  }
+}
+.content {
+  padding: 4em 0;
+  &.home {
+    padding-top: 0;
+  }
+  &.blog {
+    .container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+  &.seller {
+    padding-bottom: 0;
+  }
+  section {
+    &.purple {
+      background: lighten($light-blue, 15%);
+      color: $white;
+    }
+    .container {
+      p,
+      li,
+      .usercontent {
+        font-size: 1.2em;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+.caption {
+  p {
+    font-size: 0.8em;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
+  }
+}
+ol.buying-tips {
+  list-style: none;
+  counter-reset: my-badass-counter;
+  li {
+    position: relative;
+    padding-bottom: $gutter-width;
+    &:before {
+      content: counter(my-badass-counter);
+      counter-increment: my-badass-counter;
+      font-size: 2em;
+      font-weight: 600;
+      position: absolute;
+      background: darken($grey, 20%);
+      color: $white;
+      left: -1.25em;
+      padding: 0 0.2em;
+    }
+  }
+  h1 {
+    color: darken($grey, 20%);
+  }
+}
+section.cta {
+  background: $blue;
+  color: $white;
+  padding: $gutter-width 0;
+  text-align: center;
+  &.seller {
+  }
+}
+.vendor-tile {
+  display: inline-block;
+  width: 50%;
+  margin: 0 -3px $gutter-width * 2;
+  text-align: center;
+  .button {
+    margin-right: 1em;
+    &:last-child {
+      margin-right: 0;
+    }
+    .fa {
+      padding-right: 0.25em;
+    }
+  }
+}
+.vendor h2 {
+  text-align: center;
+}
+.row.no-margin {
+  margin: 0;
+}

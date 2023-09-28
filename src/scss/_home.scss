@@ -1,0 +1,51 @@
+.pic {
+  @include aspect-ratio(1, 1);
+  background-repeat: no-repeat;
+  background-size: cover;
+  &.align-right {
+    background-position: center;
+  }
+  &.align-left {
+    background-position: center;
+  }
+}
+.open-house-section {
+  background: $black;
+
+  text-align: center;
+  .thumbs {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  h2 {
+    color: $white;
+    margin: 0;
+    padding: 1em 0 2em;
+  }
+  .open-house-thumb {
+    background: $white;
+    display: inline-block;
+    width: 90%;
+    padding: 2em 2.5%;
+    margin: 0 auto $gutter-width;
+    @include nice-transition();
+    .thumb-image {
+      width: 100%;
+      padding-bottom: 66.66%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    @include bp(m) {
+      width: 30%;
+      margin: 0 calc($gutter-width/2) $gutter-width;
+    }
+    &:hover {
+      background: $off-white;
+    }
+  }
+}
+
+/*
+<a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NWJlOGRuYWY3MTdsZzNicmczcjEzdnNhbGUgYWxleGJldXNjaGVyQG0&amp;tmsrc=alexbeuscher%40gmail.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
+*/

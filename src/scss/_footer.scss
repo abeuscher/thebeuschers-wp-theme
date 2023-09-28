@@ -1,0 +1,38 @@
+footer {
+  .footer-menu {
+
+  }
+  .footer-top {
+    text-align: center;
+    padding:4em 0;
+    background: $light-blue;
+    color:$white;
+    img {
+      max-width:12em;
+    }
+    .fa-stack {
+      color:$light-blue;
+    }
+    ul.hmenu {
+      margin-bottom:4em;
+    }
+    a {
+      color:$white;
+    }
+  }
+  nav {
+    ul {
+      li {
+        a {
+          padding:0 1em 0;
+        }
+      }
+    }
+  }
+  .footer-bottom {
+    text-align: center;
+    padding:3em 0 4em;
+    background: $blue;
+    color:$white;
+  }
+}

@@ -1,0 +1,44 @@
+extends inc/page.pug
+block template
+  :php
+    /*
+    Template Name: Buyers and Sellers Page
+    */
+block content
+  :php
+    if( have_posts() ) {
+        while( have_posts() ) {
+            the_post();
+  .content
+    section
+      .container
+        .row
+          .col-md-12
+            h1
+              :php
+                the_title();
+            ol.buying-tips
+              :php
+                foreach(get_field("buying_tips") as $key=>$tip) {
+                  printf("<li><h1>%s</h1><div class='tip-content'>%s</div>",$tip["tip_title"],$tip["tip_content"]);
+                  }
+                  }}
+  section.cta
+    .container
+      .row
+        .col-md-12
+          :php
+            printf("<h2>%s</h2><a class='button knockout cta' href='%s'>%s</a>",get_field("cta_header_text"),get_field("cta_link"),get_field("cta_button_label"));
+  .content
+    section
+      .container
+        .row
+          .col-md-12
+            :php
+              printf("<h2>%s</h2><div class='usercontent'>%s</div>",get_field("bottom_header"),get_field("bottom_header_text"));
+          .col-md-6
+            :php
+              printf("<div class='usercontent'>%s</div>",get_field("bottom_left_column"));
+          .col-md-6
+            :php
+              printf("<div class='usercontent'>%s</div>",get_field("bottom_right_column"));

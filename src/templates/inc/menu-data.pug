@@ -1,0 +1,51 @@
+-
+  if (typeof siteurl === "undefined") {
+    siteurl = "https://thebeuschers.com"
+  }
+  var menudata = [
+    {
+      label: "Home",
+      url: "/",
+      classname: "home"
+    },
+    {
+      label: "Buyers",
+      url: siteurl+"buyers",
+      classname: ""
+    },
+    {
+      label: "Sellers",
+      url: siteurl+"sellers",
+      classname: ""
+    },
+    {
+      label: "Vendors",
+      url: siteurl+"vendors",
+      classname: ""
+    },
+    {
+      label: "Listings",
+      url: "https://withwre.com/thebeuschers/listings/my-office-s-listings",
+      classname: ""
+    },
+    {
+      label: "Contact",
+      url: siteurl+"contact-us",
+      classname: ""
+    },
+    {
+      label: "Our Sales",
+      url: siteurl+"our-sales",
+      classname: ""
+    }]
+mixin menuitem(item)
+  li
+    a(href=item.url,class=item.classname)=item.label
+    if item.children
+      ul
+        each subitem in item.children
+          +menuitem(subitem)  
+mixin makemenu(data)
+  ul
+    each item in data
+      +menuitem(item)

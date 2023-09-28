@@ -1,0 +1,15 @@
+extends inc/page.pug
+block template
+  :php
+    /*
+    Template Name: 404 Page
+    */
+block content
+  section.container
+    .row
+      .col-md-8.col-md-offset-2
+        br
+        h1 404 Not Found
+        p Maybe try a search?
+        :php
+          get_search_form();

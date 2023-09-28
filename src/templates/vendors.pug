@@ -1,0 +1,31 @@
+extends inc/page.pug
+block template
+  :php
+    /*
+    Template Name: Vendors Page
+    */
+block content
+  :php
+    if( have_posts() ) {
+        while( have_posts() ) {
+            the_post();
+  .content
+    section
+      .container
+        .row
+          .col-md-12.vendor
+            :php
+              foreach(get_field("vendor_type") as $key=>$vendor_type) {
+                printf("<h2>%s</h2>", $vendor_type["vendor_title"]);
+                foreach($vendor_type["vendors"] as $vkey=>$vendor) {
+                if ($vendor["vendor_image"]) {
+                  printf("<div class='vendor-tile'><img src='%s' alt='%s' /><h3>%s</h3><p>%s</p><a href='%s' class='button' target='_blank'><i class='fa fa-external-link'></i>website</a><a href='mailto:%s' class='button'><i class='fa fa-envelope'></i>email</a></div>",$vendor["vendor_image"]["url"],$vendor["vendor_name"],$vendor["vendor_name"],$vendor["vendor_job_title"],$vendor["vendor_link"],$vendor["vendor_email"]);
+                
+                  }
+                else {
+                  printf("<div class='vendor-tile'><h3>%s</h3><p>%s</p><a href='%s' class='button' target='_blank'><i class='fa fa-external-link'></i>website</a><a href='mailto:%s' class='button'><i class='fa fa-envelope'></i>email</a></div>",$vendor["vendor_name"],$vendor["vendor_job_title"],$vendor["vendor_link"],$vendor["vendor_email"]);
+                
+                  }
+                }
+              }
+              }}

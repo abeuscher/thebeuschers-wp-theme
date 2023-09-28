@@ -1,0 +1,32 @@
+.testimonial-header {
+  h1 {
+    text-align: center;
+  }
+}
+.swiper-container {
+  padding: 3em 0;
+}
+.testimonial-wrapper {
+  margin-bottom: 100px;
+
+  .swiper-button-prev {
+    margin-top: -2em;
+  }
+  .swiper-button-next {
+    margin-top: -2em;
+  }
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .testimonial {
+    padding: $gutter-width $gutter-width ($gutter-width * 1.8);
+    background: lighten($light-blue, 25%);
+    height: 100%;
+    width: 80%;
+    margin: 0 10%;
+  }
+}

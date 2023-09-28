@@ -1,0 +1,55 @@
+extends inc/page.pug
+block template
+  :php
+    /*
+    Template Name: Home Page
+    */
+block content
+  article.content.home
+    section.marquee(data-bg="pic-needle-diff.jpg")
+      .container
+        .row
+          .col-md-6
+          .col-md-6
+            h1
+              :php
+                echo get_field("page_headline");
+            h2
+              :php
+                echo get_field("page_tagline");
+            :php
+              echo "<a class='button cta main' href='".get_field("main_button_target")."'>".get_field("main_button_label")."</a>";
+    :php
+      $page_block = "";
+      $pages = get_pages(array(
+        'meta_key' => '_wp_page_template',
+        'meta_value' => 'open-house.php'
+      ));
+      foreach($pages as $page) {
+        if ($page->show_link == "yes") {
+          $id = $page->ID;
+          $page_block .= sprintf("<a class='open-house-thumb' href='%s'><h3>%s</h3><p class='more-link'>learn more</p></a>", get_permalink($id),$page->post_title,get_post_meta( $id, 'excerpt', true));
+        }
+      }
+      if ($page_block!="") {
+        printf("<section class='open-house-section'>%s</section>",$page_block)
+      }
+      foreach(get_field("sections") as $key=>$section) {
+        echo "<section class='".$section["background_color"]." padding-top'>";
+    .container
+      .row
+        :php
+          $headers = $section["section_headline"] != "" ? "<h2>".$section["section_headline"]."</h2>" : "";
+          $headers = $section["section_subhead"] != "" ? $headers."<h3>".$section["section_subhead"]."</h3>" : $headers; 
+          $cta = $section["section_button_label"] ? "<a class='button' href='".$section["section_button_target"]."'>".$section["section_button_label"]."</a>" : "";
+          if ($section["section_picture"]) {
+            $picrow = "<div class='col-md-6'><div class='pic align-".$section["section_picture_orientation"]."' data-bg-object='".json_encode($section["section_picture"], JSON_UNESCAPED_SLASHES)."'></div></div>";
+            $textrow = "<div class='col-md-6'>".$headers.$section["section_content"].$cta."</div>";
+            echo $section["section_picture_orientation"]=="left" ? $picrow.$textrow : $textrow.$picrow;
+          }
+          else {
+            echo "<div class='col-md-12'>".$headers.$section["section_content"].$cta."</div>";
+          }
+    :php
+      echo "</section>";
+      }

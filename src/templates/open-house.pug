@@ -1,0 +1,38 @@
+extends inc/page.pug
+block template
+    :php
+        /*
+        Template Name: Open House LP
+        */
+block content  
+    .carousel-title
+        .container
+            .row
+                .col-md-12
+                    :php
+                        printf("<h1>%s</h1>",get_the_title());
+    .carousel-wrapper
+        .container
+            .row
+                .col-md-8.col-md-offset-2
+                    .carousel.swiper-container
+                        .swiper
+                            .swiper-wrapper
+                                :php
+                                    foreach(get_field("photos") as $idx=>$slide) {
+                                        printf("<div class='swiper-slide' data-bg-object='%s'><div class='photo-caption'><p>%s</p></div></div>",json_encode($slide["photo"],JSON_UNESCAPED_SLASHES),$slide["caption"]);
+                                    }
+                        .swiper-pagination
+                        .swiper-button-prev
+                        .swiper-button-next
+    .container
+        .row
+            .col-md-12
+                .content
+                    :php
+                        the_content();
+            :php
+                $cta = get_field("cta");
+                if ($cta["button_label"]!="" && $cta["button_url"]!="") {
+                    printf("<div class='col-md-12 centered padding-bottom'><a class='button' target='_blank' href='%s'>%s</a></div>", $cta["button_url"], $cta["button_label"]);
+                }

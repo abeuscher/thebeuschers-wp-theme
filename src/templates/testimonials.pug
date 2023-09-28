@@ -1,0 +1,29 @@
+extends inc/page.pug
+block template
+    :php
+        /*
+        Template Name: Testimonials
+        */
+block content  
+    .testimonial-header
+        .container
+            .row
+                .col-md-12
+                    :php
+                        printf("<h1>%s</h1>",get_field("page_header"));
+                        printf("<div class='wysiwyg'>%s</h1>",get_field("page_top_content"));
+
+    .testimonial-wrapper
+        .container
+            .row
+                .col-md-10.col-md-offset-1
+                    .carousel.swiper-container
+                        .swiper
+                            .swiper-wrapper
+                                :php
+                                    foreach(get_field("testimonials") as $idx=>$slide) {
+                                        printf("<div class='swiper-slide'><div class='testimonial'><div class='wysiwyg'>%s</div><cite>%s</cite></div></div>",$slide["testimonial"],$slide["name"]);
+                                    }
+                            .swiper-pagination
+                            .swiper-button-prev
+                            .swiper-button-next

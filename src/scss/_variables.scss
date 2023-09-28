@@ -1,0 +1,29 @@
+//config
+$cdn-path:"/wp-content/themes/thebeuschers/";
+$img-path:$cdn-path+"images/";
+$font-path:$cdn-path+"/fonts/";
+
+//Breakpoints
+$bps: (xs: 0, s:641px, m:1025px, l:1321px,xl:1921px);
+
+$gutter-width:24px;
+
+//color-values
+$white:#ffffff;
+$black:#000000;
+$off-black:#4a4a4a;
+$off-white:#f6f6f6;
+$grey: #cdcdcd;
+$blue:#02155b;
+$light-blue:#7b7bd9;
+$green:#BF0603;
+
+//colors
+$body-bg-color:linear-gradient(90deg, rgb(41, 44, 99) 0%, rgb(54, 64, 125) 100%);
+$body-text-color:$black;
+$body-link-color:$black;
+$header-color:$blue;
+
+//fonts
+$body-font:'Lato', sans-serif;
+$header-font:'Lato', sans-serif;
