@@ -23,6 +23,7 @@
     padding: 1em 0 2em;
   }
   .open-house-thumb {
+    border-radius: 5px;
     background: $white;
     display: inline-block;
     width: 90%;
@@ -35,6 +36,7 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
+      border-radius: 5px;
     }
     @include bp(m) {
       width: 30%;
@@ -42,6 +44,7 @@
     }
     &:hover {
       background: $off-white;
+      transform: scale(1.05);
     }
   }
 }

@@ -8,9 +8,9 @@ block content
 	.content
 		:php
 			if( have_posts() ){
-			 while( have_posts() ) {
-				the_post();
-				$start_date = get_the_date();
+				while( have_posts() ) {
+					the_post();
+					$start_date = get_the_date();
 			$parent_title = "Blog";
 			$parent_url = "/blog/";
 		include ./inc/breadcrumbs.pug
@@ -21,7 +21,6 @@ block content
 						h1
 							:php
 								the_title();
-						include ./inc/social-share-menu.pug
 		section.container.blog-content
 			.row
 				.col-md-12
@@ -35,11 +34,11 @@ block content
 						if ( comments_open() ) :
 							$fields = array(
 								'author' => '<p class="comment-form-author">' . '<label for="author">' . __( 'Name', 'responsive' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-								'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" /></p>',
+								'<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" /></p>' 
 								'email'  => '<p class="comment-form-email"><label for="email">' . __( 'E-mail', 'responsive' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) .
-								'<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" /></p>',
+								'<input id="email" name="email" type="text" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" /></p>' 
 								'url'    => '<p class="comment-form-url"><label for="url">' . __( 'Website', 'responsive' ) . '</label>' .
-								'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>',
+								'<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /></p>' 
 							);
 
 							$defaults = array( 'fields' => apply_filters( 'comment_form_default_fields', $fields ) );
@@ -50,10 +49,10 @@ block content
 						if ($comments) {
 					h2 Comments
 					:php
-							foreach ($comments as $idx=>$comment) {
-								printf("<div class='comment'><div class='comment-content'>%s</div><cite>Posted by %s on %s</cite></div>",$comment->comment_content,$comment->comment_author,$comment->comment_date);
-							}
-							
+						foreach ($comments as $idx=>$comment) {
+							printf("<div class='comment'><div class='comment-content'>%s</div><cite>Posted by %s on %s</cite></div>",$comment->comment_content,$comment->comment_author,$comment->comment_date);
+						}
+
 						}
 						else {
 							echo "No comments yet...";

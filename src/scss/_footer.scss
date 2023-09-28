@@ -1,38 +1,44 @@
 footer {
   .footer-menu {
-
   }
   .footer-top {
     text-align: center;
-    padding:4em 0;
+    padding: 4em 0;
     background: $light-blue;
-    color:$white;
+    color: $white;
     img {
-      max-width:12em;
+      max-width: 12em;
     }
-    .fa-stack {
-      color:$light-blue;
+    .icon {
+      fill: $white;
     }
     ul.hmenu {
-      margin-bottom:4em;
+      margin-bottom: 4em;
+      &.contact {
+        a {
+          display: flex;
+          align-items: center;
+          padding: 0 1em;
+        }
+      }
     }
     a {
-      color:$white;
+      color: $white;
     }
   }
   nav {
     ul {
       li {
         a {
-          padding:0 1em 0;
+          padding: 0 1em 0;
         }
       }
     }
   }
   .footer-bottom {
     text-align: center;
-    padding:3em 0 4em;
+    padding: 3em 0 4em;
     background: $blue;
-    color:$white;
+    color: $white;
   }
 }

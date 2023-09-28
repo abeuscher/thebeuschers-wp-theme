@@ -1,36 +1,36 @@
 @mixin nav-font {
-  font-family:sans-serif;
-  text-decoration:none;
-  display:inline-block;
+  font-family: sans-serif;
+  text-decoration: none;
+  display: inline-block;
 }
 @mixin no-list {
-  margin:0;
-  padding:0;
-  list-style:none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .small-nav {
-  text-align:right;
-  display:inline-block;
+  text-align: right;
+  display: inline-block;
   ul {
-    display:inline-block;
-    margin:0;
-    padding:.25em 0;
+    display: inline-block;
+    margin: 0;
+    padding: 0.25em 0;
     li {
       a {
-        font-weight:400;
-        font-size:1em;
-        padding:.25em 0 0 2.5em;
+        font-weight: 400;
+        font-size: 1em;
+        padding: 0.25em 0 0 2.5em;
         display: inline-block;
       }
     }
   }
 }
 ul.hmenu.social-links {
-  margin-left:1.5em;
-  padding:.5em 0;
+  margin-left: 1.5em;
+  padding: 0.5em 0;
   li {
-    padding-left:1em;
+    padding-left: 1em;
   }
 }
 $hamburger-width: 40px;
@@ -39,17 +39,17 @@ $bar-thickness: 5px;
 $hamburger-top: 30px;
 $hamburger-right: 30px;
 .side-nav {
-  display:block;
-  position:relative;
-  z-index:999;
+  display: block;
+  position: relative;
+  z-index: 999;
   @include bp(m) {
-    display:none;
+    display: none;
   }
   .hamburger {
     display: inline-block;
-    width: $hamburger-width + $hamburger-padding*2;
-    height: $bar-thickness*10;
-    border-radius:5px;
+    width: $hamburger-width + $hamburger-padding * 2;
+    height: $bar-thickness * 10;
+    border-radius: 5px;
     background: transparent;
     position: absolute;
     top: $hamburger-top;
@@ -61,22 +61,22 @@ $hamburger-right: 30px;
       height: $bar-thickness;
       width: $hamburger-width;
       left: $hamburger-padding;
-      top: $bar-thickness*2;
+      top: $bar-thickness * 2;
       background: black;
-      margin-bottom: $bar-thickness*2;
+      margin-bottom: $bar-thickness * 2;
       transition: all 0.2s ease-in;
       &:nth-child(2) {
-        top: $bar-thickness*4.5;
+        top: $bar-thickness * 4.5;
       }
       &:last-child {
-        top: $bar-thickness*7;
+        top: $bar-thickness * 7;
         margin: 0;
       }
     }
   }
   label {
-    width: $hamburger-width + $hamburger-padding*2;
-    height: $bar-thickness*10;
+    width: $hamburger-width + $hamburger-padding * 2;
+    height: $bar-thickness * 10;
     display: inline-block;
     position: fixed;
     top: $hamburger-top;
@@ -85,19 +85,9 @@ $hamburger-right: 30px;
     cursor: pointer;
   }
   .inner {
-    /*
-    background: linear-gradient(
-      to left,
-      rgba(255, 255, 255, 1) 321px,
-      rgba(255, 255, 255, 1) 321px,
-      rgba(0, 0, 0, 0.5) 321px,
-      rgba(0, 0, 0, 0.5) 100%
-    );
-    */
-    background:rgba(0,0,0,.9);
+    background: rgba(0, 0, 0, 0.9);
     position: fixed;
     overflow-x: hidden;
-    overflow-y: scroll;
     top: 0;
     right: 0;
     bottom: 0;
@@ -109,7 +99,7 @@ $hamburger-right: 30px;
     a {
       @include nav-font;
       color: white;
-      font-size:1.6em;
+      font-size: 1.6em;
       padding: 0.25em 1em;
       &:hover {
         color: gray;
@@ -119,7 +109,7 @@ $hamburger-right: 30px;
       @include no-list;
       position: absolute;
       right: 0;
-      width:90%;
+      width: 90%;
       max-width: 450px;
       li {
         display: block;
@@ -145,11 +135,11 @@ $hamburger-right: 30px;
           }
           &:first-child {
             transform: rotate(45deg);
-            top: $bar-thickness*4.5;
+            top: $bar-thickness * 4.5;
           }
           &:last-child {
             transform: rotate(-45deg);
-            top: $bar-thickness*4.5;
+            top: $bar-thickness * 4.5;
           }
         }
       }

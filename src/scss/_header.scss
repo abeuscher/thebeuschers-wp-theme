@@ -1,90 +1,108 @@
 header.main {
-  width:100%;
+  width: 100%;
   background: $white;
 }
-.contact-header {
-    h2 {
-      margin:2em 0 .5em;
-      padding:0;
-      text-transform: uppercase;
-      font-size:1.1em;
-      letter-spacing: 1.5px;
-    }
-    a {
-      line-height:2;
-      color:$light-blue;
-    }
-    .fa-stack {
-      margin-right:.25em;
-      color:$light-blue;
-    }
-    ul.first li {
-      display:block;
-    }
-    .email {
-      font-size:12px;
-    }
-    .logo {
-      #logo-facepic {
-        display:none;
-        @include bp(s) {
-          background:url("/wp-content/themes/thebeuschers/images/header-image.jpg") no-repeat center;
-          background-size:cover;
-          @include aspect-ratio(1,1);
-          width:150px;
-          vertical-align: middle;
-          display:inline-block;
-        }
-      }
-      .headpic {
-        background-size:cover;
-        height:8em;
-        width:6em;
-        display: inline-block;
-        vertical-align: middle;
-        position: relative;
-        background-position: bottom center;
-        h1 {
-          position: absolute;
-          bottom:0;
-          display:block;
-          text-align: center;
-          text-decoration: none;
-          font-size:.8em;
-          background:linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.85) 100%);
-          margin:0;
-          padding:0;
-          color:$white;
-          line-height:1;
-          text-transform: uppercase;
-        }
-      }
-      img {
-        max-height:8em;
-        width:auto;
-        display:inline-block;
-        vertical-align: middle;
-      }
-
-    }
+body[data-sitebase] {
+  header.main {
+    margin-left: -15px;
+    width: calc(100% + 30px);
+  }
 }
-.main-header {
+.contact-header {
+  h2 {
+    margin: 2em 0 0.5em;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+  }
   a {
-    line-height:2;
-    color:$white;
-    .fa-stack {
-      color:$light-blue;
-    }
+    color: $light-blue;
+    display: flex;
+    align-items: center;
     &:hover {
-      color:$grey;
-      .fa-stack {
-        color:darken($grey,20%);
+      color: darken($grey, 20%);
+      .icon .inner {
+        background: darken($grey, 20%);
       }
     }
   }
-  background:$blue;
-  color:$white;
-  .fa-stack {
-    color:$blue;
+  .icon {
+    margin: 0 0.25em 0.25em 0;
+    .inner {
+      background: $light-blue;
+      fill: $white;
+    }
+  }
+  ul.first li {
+    display: block;
+  }
+  .email {
+    font-size: 12px;
+  }
+  .logo {
+    #logo-facepic {
+      display: none;
+      @include bp(s) {
+        background: url("/wp-content/themes/thebeuschers/images/header-image.jpg") no-repeat center;
+        background-size: cover;
+        @include aspect-ratio(1, 1);
+        width: 150px;
+        vertical-align: middle;
+        display: inline-block;
+      }
+    }
+    .headpic {
+      background-size: cover;
+      height: 8em;
+      width: 6em;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      background-position: bottom center;
+      h1 {
+        position: absolute;
+        bottom: 0;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-size: 0.8em;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.85) 100%);
+        margin: 0;
+        padding: 0;
+        color: $white;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+    }
+    img {
+      max-height: 8em;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+}
+.main-header {
+  nav a {
+    line-height: 32px;
+  }
+  a {
+    color: $white;
+    .icon {
+      fill: $light-blue;
+    }
+    &:hover {
+      .icon {
+        .inner {
+          background: darken($grey, 20%);
+        }
+      }
+    }
+  }
+  background: $blue;
+  color: $white;
+  .icon {
+    fill: $blue;
   }
 }

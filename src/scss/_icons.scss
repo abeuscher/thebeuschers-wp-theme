@@ -1,0 +1,16 @@
+.icon {
+  display: inline-block;
+  .inner {
+    border-radius: 16px;
+    width: 32px;
+    height: 32px;
+    background: $light-blue;
+    fill: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  svg {
+    width: 18px;
+  }
+}

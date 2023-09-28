@@ -22,14 +22,20 @@ const clearDir = (directory, cb) => {
 };
 
 const runTemplates = (eventType, filename) => {
-  buildTemplates(siteSettings);
+  console.log(eventType);
+  if (eventType === "change") {
+    buildTemplates(siteSettings);
+  }
 };
 const runScripts = (eventType, filename) => {
-  buildScripts(siteSettings);
-  siteSettings;
+  if (eventType === "change") {
+    buildScripts(siteSettings);
+  }
 };
 const runStyles = (eventType, filename) => {
-  buildStyles(siteSettings);
+  if (eventType === "change") {
+    buildStyles(siteSettings);
+  }
 };
 
 const buildSite = () => {
@@ -47,6 +53,6 @@ const buildSite = () => {
 
 clearDir(siteSettings.templatesWrite, buildSite);
 
-fs.watch(siteSettings.templatesSrc, runTemplates);
-fs.watch(siteSettings.jsWatch, runScripts);
-fs.watch(siteSettings.scssSrc, runStyles);
+fs.watch(siteSettings.templatesSrc, { recursive: true, persistent: true }, runTemplates);
+fs.watch(siteSettings.jsWatch, { recursive: true, persistent: true }, runScripts);
+fs.watch(siteSettings.scssSrc, { recursive: true, persistent: true }, runStyles);

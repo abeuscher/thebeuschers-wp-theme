@@ -103,6 +103,10 @@ button,
       padding-bottom: 0;
     }
   }
+  &.open-house {
+    font-size: 1.4em;
+    line-height: 1.8;
+  }
   &.seller {
     padding-bottom: 0;
   }
@@ -170,9 +174,6 @@ section.cta {
     margin-right: 1em;
     &:last-child {
       margin-right: 0;
-    }
-    .fa {
-      padding-right: 0.25em;
     }
   }
 }

@@ -10,18 +10,18 @@ header.main
       .col-md-3.visible-md.visible-lg
         h2       
       .col-md-3.visible-md.visible-lg
-        h2 John Beuscher
-        a(href='tel:1-206-409-2244')
-          span.fa-1x.fa-stack
-            i.fa.fa-circle.fa-stack-2x
-            i.fa.fa-stack-1x.fa-inverse.fa-phone
-          span 1-206-409-2244
-        br
-        a(href='mailto:thebeuschers@windermere.com')
-          span.fa-1x.fa-stack
-            i.fa.fa-circle.fa-stack-2x
-            i.fa.fa-stack-1x.fa-inverse.fa-envelope
-          span.email thebeuschers@windermere.com
+        .contact-block
+          h2 John Beuscher
+          a(href='tel:1-206-409-2244')
+            .icon
+              .inner
+                include icons/phone.svg
+            span 1-206-409-2244
+          a(href='mailto:thebeuschers@windermere.com')
+            .icon
+              .inner
+                include icons/envelop.svg
+            span.email thebeuschers@windermere.com
   section.main-header
     .container
       .row
@@ -29,19 +29,19 @@ header.main
           ul.hmenu.social-links
             li
               a(href='https://www.facebook.com/TheBeuschers/')
-                span.fa-1x.fa-stack
-                  i.fa.fa-circle.fa-stack-2x
-                  i.fa.fa-stack-1x.fa-inverse.fa-facebook
+                .icon
+                  .inner
+                    include icons/facebook.svg
             li
               a(href='https://www.youtube.com/channel/UCJrgtcobqCglLqUUUK1t0XQ?app=desktop')
-                span.fa-1x.fa-stack
-                  i.fa.fa-circle.fa-stack-2x
-                  i.fa.fa-stack-1x.fa-inverse.fa-youtube
+                .icon
+                  .inner
+                    include icons/youtube.svg
             li
               a(href='https://www.instagram.com/thebeuschers.re/')
-                span.fa-1x.fa-stack
-                  i.fa.fa-circle.fa-stack-2x
-                  i.fa.fa-stack-1x.fa-inverse.fa-instagram
+                .icon
+                  .inner
+                    include icons/instagram.svg
         .col-md-8.visible-md.visible-lg.right.no-padding
           nav.small-nav
             ul.hmenu
