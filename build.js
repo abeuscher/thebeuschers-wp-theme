@@ -22,7 +22,6 @@ const clearDir = (directory, cb) => {
 };
 
 const runTemplates = (eventType, filename) => {
-  console.log(eventType);
   if (eventType === "change") {
     buildTemplates(siteSettings);
   }
@@ -45,6 +44,10 @@ const buildSite = () => {
   buildStyles(siteSettings);
   try {
     fse.copySync(siteSettings.assetSrc, siteSettings.assetWrite, { overwrite: true });
+    fse.copyFile(
+      siteSettings.srcDir + siteSettings.siteThumb,
+      siteSettings.assetWrite + siteSettings.siteThumb,
+    );
     console.log("Assets copied");
   } catch (err) {
     console.error(err);
