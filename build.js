@@ -1,3 +1,4 @@
+const chokidar = require("chokidar");
 const fs = require("fs");
 const fse = require("fs-extra");
 const path = require("path");
@@ -15,26 +16,10 @@ const clearDir = (directory, cb) => {
       return console.error(err);
     }
     console.log("Directory cleared");
+    if (cb) {
+      cb();
+    }
   });
-  if (cb) {
-    cb();
-  }
-};
-
-const runTemplates = (eventType, filename) => {
-  if (eventType === "change") {
-    buildTemplates(siteSettings);
-  }
-};
-const runScripts = (eventType, filename) => {
-  if (eventType === "change") {
-    buildScripts(siteSettings);
-  }
-};
-const runStyles = (eventType, filename) => {
-  if (eventType === "change") {
-    buildStyles(siteSettings);
-  }
 };
 
 const buildSite = () => {
@@ -56,6 +41,17 @@ const buildSite = () => {
 
 clearDir(siteSettings.templatesWrite, buildSite);
 
-fs.watch(siteSettings.templatesSrc, { recursive: true, persistent: true }, runTemplates);
-fs.watch(siteSettings.jsWatch, { recursive: true, persistent: true }, runScripts);
-fs.watch(siteSettings.scssSrc, { recursive: true, persistent: true }, runStyles);
+const templateWatcher = chokidar.watch(siteSettings.templatesSrc);
+templateWatcher.on("change", () => {
+  buildTemplates(siteSettings);
+});
+
+const scriptWatcher = chokidar.watch(siteSettings.jsWatch);
+scriptWatcher.on("change", () => {
+  buildScripts(siteSettings);
+});
+
+const stylesheetWatcher = chokidar.watch(siteSettings.scssSrc);
+stylesheetWatcher.on("change", () => {
+  buildStyles(siteSettings);
+});

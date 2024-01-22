@@ -10,17 +10,18 @@
   "author": "Alex Beuscher",
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.0.3",
-    "pug": "^3.0.2",
     "esbuild": "^0.19.3",
     "esbuild-plugin-pug": "^0.0.8",
     "fs": "^0.0.1-security",
     "fs-extra": "^11.1.1",
     "path": "^0.12.7",
+    "prettier": "^3.0.3",
+    "pug": "^3.0.2",
     "pug-php-filter": "^0.0.1",
     "sass": "^1.67.0"
   },
   "dependencies": {
+    "chokidar": "^3.5.3",
     "swiper": "^10.2.0"
   }
 }

@@ -29,8 +29,8 @@ block content
 			$paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 			//$query = new WP_Query( array('post_type' => 'post','paged' => $paged) );
 			if( have_posts() ) {
-					while( have_posts() ) {
-							the_post();
+				while( have_posts() ) {
+					the_post();
 		article
 			:php
 				echo "<a class='blog-header' href='".get_the_permalink()."'><div class='blog-thumb'>";
@@ -72,9 +72,9 @@ block content
 				:php
 					$big = 999999999;
 						echo paginate_links( array(
-								'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-								'format' => '?paged=%#%',
-								'current' => max( 1, get_query_var('paged') ),
-								'total' => $query->max_num_pages
+							'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+							'format' => '?paged=%#%',
+							'current' => max( 1, get_query_var('paged') ),
+							'total' => $query->max_num_pages
 							)
 						);
