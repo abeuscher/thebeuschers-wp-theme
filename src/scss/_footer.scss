@@ -1,44 +1,116 @@
-footer {
-  .footer-menu {
-  }
+@use "variables" as *;
+@use "sass:math";
+
+.main {
+  text-align: center;
+
   .footer-top {
-    text-align: center;
-    padding: 4em 0;
+    padding: 4rem 0;
     background: $light-blue;
     color: $white;
-    img {
-      max-width: 12em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      a {
+        color: $white;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        transition: opacity $transition-speed;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
     }
-    .icon {
-      fill: $white;
-    }
-    ul.hmenu {
-      margin-bottom: 4em;
-      &.contact {
-        a {
+
+    .contact-info {
+      h2 {
+        margin-bottom: 1rem;
+        font-family: $header-font;
+      }
+
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        @media (min-width: map-get($bps, "s")) {
+          flex-direction: row;
+          justify-content: center;
+        }
+      }
+
+      .contact-link {
+        display: flex;
+        align-items: center;
+        color: $white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        transition: opacity $transition-speed;
+
+        &:hover {
+          opacity: 0.8;
+        }
+
+        .icon {
+          margin-right: 0.5rem;
+          width: $icon-size;
+          height: $icon-size;
           display: flex;
           align-items: center;
-          padding: 0 1em;
+          justify-content: center;
+
+          svg {
+            width: $icon-inner-size;
+            height: $icon-inner-size;
+            fill: currentColor;
+          }
         }
       }
     }
-    a {
-      color: $white;
-    }
-  }
-  nav {
-    ul {
-      li {
-        a {
-          padding: 0 1em 0;
-        }
+
+    .footer-logo {
+      img {
+        max-width: 12rem;
+        height: auto;
       }
     }
   }
+
   .footer-bottom {
-    text-align: center;
-    padding: 3em 0 4em;
+    padding: 3rem 0 4rem;
     background: $blue;
     color: $white;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+  }
+}
+
+@media (max-width: map-get($bps, "s")) {
+  .main {
+    .footer-top {
+      padding: 3rem 1rem;
+
+      .contact-info {
+        .contact-links {
+          .contact-link {
+            font-size: 0.875rem;
+          }
+        }
+      }
+    }
   }
 }

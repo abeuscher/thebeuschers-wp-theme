@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 @mixin nav-font {
   font-family: sans-serif;
   text-decoration: none;
@@ -42,9 +44,6 @@ $hamburger-right: 30px;
   display: block;
   position: relative;
   z-index: 999;
-  @include bp(m) {
-    display: none;
-  }
   .hamburger {
     display: inline-block;
     width: $hamburger-width + $hamburger-padding * 2;

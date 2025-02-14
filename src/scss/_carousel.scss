@@ -1,3 +1,6 @@
+@use "variables" as *;
+@use "sass-mixins" as *;
+
 .carousel-title {
   background: $black;
   color: $white;

@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .breadcrumbs-bucket {
   padding-top: 70px;
   padding-bottom: 0;
@@ -113,45 +115,6 @@ a.pager-thumb {
 
       &.thumb-headline {
         color: $white;
-      }
-    }
-  }
-  @include bp(m) {
-    position: fixed;
-    z-index: 9999;
-    bottom: 0;
-    width: 285px;
-    height: 50px;
-    transition: all 0.25s ease-in-out;
-
-    .label-wrapper {
-      display: block;
-    }
-
-    &.prev {
-      left: 0;
-    }
-
-    &.next {
-      right: 0;
-    }
-
-    .title-wrapper {
-      opacity: 0;
-    }
-
-    &:hover {
-      .label-wrapper {
-        display: none;
-      }
-      .next-arrow {
-        background-position: -60px 10px;
-      }
-      .prev-arrow {
-        background-position: -30px 10px;
-      }
-      .title-wrapper {
-        opacity: 1;
       }
     }
   }

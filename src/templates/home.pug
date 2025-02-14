@@ -15,52 +15,77 @@ block content
       foreach($pages as $page) {
         if ($page->show_link == "yes") {
           $id = $page->ID;
-          $info = get_field( 'homepage_info', $id);
-          $blurb = $info["blurb"] ? sprintf("<p>%s</p>",$info["blurb"]) : "";
-          $thumb = $info["thumb"] ? sprintf("<div class='thumb-image' data-bg-object='%s'></div>",json_encode($info["thumb"],JSON_UNESCAPED_SLASHES)) : "";
-          $page_block .= sprintf("<a class='open-house-thumb' href='%s'>%s<h3>%s</h3>%s<p class='more-link'>learn more</p></a>", get_permalink($id),$thumb,$info["title"],$blurb,get_post_meta( $id, 'excerpt', true));
+          $info = get_field('homepage_info', $id);
+          $blurb = $info["blurb"] ? sprintf("<p>%s</p>", $info["blurb"]) : "";
+          $thumb = $info["thumb"] ? sprintf("<div class='thumb-image' data-bg-object='%s'></div>", json_encode($info["thumb"], JSON_UNESCAPED_SLASHES)) : "";
+          $page_block .= sprintf(
+            "<a class='open-house-thumb' href='%s'>%s<h3>%s</h3>%s<p class='more-link'>learn more</p></a>",
+            get_permalink($id),
+            $thumb,
+            $info["title"],
+            $blurb,
+            get_post_meta($id, 'excerpt', true)
+          );
         }
       }
-      if ($page_block!="") {
-        printf("<section class='open-house-section'><h2>Upcoming Events:</h2><div class='thumbs'>%s</div></section>",$page_block);
-      }
-    section.marquee(data-bg="pic-needle-diff.jpg")
-      .container
-        .row
-          .col-md-6
-          .col-md-6
-            h1
-              :php
-                echo get_field("page_headline");
-            h2
-              :php
-                echo get_field("page_tagline");
-            :php
-              echo "<a class='button cta main' href='".get_field("main_button_target")."'>".get_field("main_button_label")."</a>";
-    :php
+      if ($page_block != "") {
+        printf("<section class='open-house-section'><div class='thumbs'>%s</div></section>", $page_block);
+      }    
       if (get_field("testimonials")) {
         $slides = "";
         foreach(get_field("testimonials") as $idx=>$slide) {
-          $slides .= sprintf("<div class='swiper-slide'><div class='testimonial'><div class='wysiwyg'>%s</div><cite>%s</cite></div></div>",$slide["testimonial"],$slide["name"]);
+          $slides .= sprintf(
+            "<div class='swiper-slide'>
+              <div class='testimonial'>
+                <div class='wysiwyg'>%s</div>
+                <cite>%s</cite>
+              </div>
+            </div>",
+            $slide["testimonial"],
+            $slide["name"]
+          );
         }        
-        printf("<div class='testimonial-wrapper'><div class='container'><div class='row'><div class='col-md-10 col-md-offset-1'><div class='carousel swiper-container'><div class='swiper'><div class='swiper-wrapper'>%s</div></div><div class='swiper-pagination'></div><div class='swiper-button-prev'></div><div class='swiper-button-next'></div></div></div></div></div></div>", $slides);
+        printf("<section class='testimonial-wrapper'>
+          <div class='testimonial-content'>
+            <h2 class='section-title'>Testimonials</h2>
+            <div class='carousel swiper-container'>
+              <div class='swiper'>
+                <div class='swiper-wrapper'>%s</div>
+              </div>
+              <div class='swiper-pagination'></div>
+              <div class='swiper-button-prev'></div>
+              <div class='swiper-button-next'></div>
+            </div>
+          </div>
+            </section>",
+            $slides
+            );
       }
       foreach(get_field("sections") as $key=>$section) {
-        echo "<section class='".$section["background_color"]." padding-top'>";
-    .container
-      .row
-        :php
-          $headers = $section["section_headline"] != "" ? "<h2>".$section["section_headline"]."</h2>" : "";
-          $headers = $section["section_subhead"] != "" ? $headers."<h3>".$section["section_subhead"]."</h3>" : $headers; 
-          $cta = $section["section_button_label"] ? "<a class='button' href='".$section["section_button_target"]."'>".$section["section_button_label"]."</a>" : "";
-          if ($section["section_picture"]) {
-            $picrow = "<div class='col-md-6'><div class='pic align-".$section["section_picture_orientation"]."' data-bg-object='".json_encode($section["section_picture"], JSON_UNESCAPED_SLASHES)."'></div></div>";
-            $textrow = "<div class='col-md-6'>".$headers.$section["section_content"].$cta."</div>";
-            echo $section["section_picture_orientation"]=="left" ? $picrow.$textrow : $textrow.$picrow;
+        $section_class = $section["background_color"] . " content-section padding-top";
+        echo "<section class='" . $section_class . "'>";
+    .section-content
+      :php
+        $headers = $section["section_headline"] != "" ? "<h2>" . $section["section_headline"] . "</h2>" : "";
+        $headers = $section["section_subhead"] != "" ? $headers . "<h3>" . $section["section_subhead"] . "</h3>" : $headers; 
+        $cta = $section["section_button_label"] ? "<a class='button' href='" . $section["section_button_target"] . "'>" . $section["section_button_label"] . "</a>" : "";
+
+        if ($section["section_picture"]) {
+          $pic_class = "pic align-" . $section["section_picture_orientation"];
+          $pic_data = json_encode($section["section_picture"], JSON_UNESCAPED_SLASHES);
+
+          echo "<div class='split-content'>";
+          if ($section["section_picture_orientation"] == "left") {
+            echo "<div class='" . $pic_class . "' data-bg-object='" . $pic_data . "'></div>";
+            echo "<div class='text-content'>" . $headers . $section["section_content"] . $cta . "</div>";
+          } else {
+            echo "<div class='text-content'>" . $headers . $section["section_content"] . $cta . "</div>";
+            echo "<div class='" . $pic_class . "' data-bg-object='" . $pic_data . "'></div>";
           }
-          else {
-            echo "<div class='col-md-12'>".$headers.$section["section_content"].$cta."</div>";
-          }
+          echo "</div>";
+        } else {
+          echo "<div class='full-width'>" . $headers . $section["section_content"] . $cta . "</div>";
+        }
     :php
       echo "</section>";
       }

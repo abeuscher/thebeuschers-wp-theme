@@ -1,48 +1,20 @@
 include ./menu-data
 
 header.main
-  section.contact-header
-    .row.no-margin
-      .col-md-6.no-padding
-        a.logo(href=siteurl)
-          #logo-facepic
-          img(src=siteurl+"wp-content/themes/thebeuschers/images/windmere-logo.png")    
-      .col-md-3.visible-md.visible-lg
-        h2       
-      .col-md-3.visible-md.visible-lg
-        .contact-block
-          h2 John Beuscher
-          a(href='tel:1-206-409-2244')
-            .icon
-              .inner
-                include icons/phone.svg
-            span 1-206-409-2244
-          a(href='mailto:thebeuschers@windermere.com')
-            .icon
-              .inner
-                include icons/envelop.svg
-            span.email thebeuschers@windermere.com
-  section.main-header
-    .container
-      .row
-        .col-md-4.no-padding
-          ul.hmenu.social-links
-            li
-              a(href='https://www.facebook.com/TheBeuschers/')
-                .icon
-                  .inner
-                    include icons/facebook.svg
-            li
-              a(href='https://www.youtube.com/channel/UCJrgtcobqCglLqUUUK1t0XQ?app=desktop')
-                .icon
-                  .inner
-                    include icons/youtube.svg
-            li
-              a(href='https://www.instagram.com/thebeuschers.re/')
-                .icon
-                  .inner
-                    include icons/instagram.svg
-        .col-md-8.visible-md.visible-lg.right.no-padding
-          nav.small-nav
-            ul.hmenu
-              +makemenu(menudata)
+  .header-top
+    .windermere-logo
+      img(src=themeDir + "images/windmere-logo.png" alt="Windermere Logo")
+    .logo
+      include icons/logo.svg
+    .contact-block
+      a(href='tel:1-206-409-2244').contact-link
+        .icon
+          include icons/phone.svg
+        span 1-206-409-2244
+      a(href='mailto:thebeuschers@windermere.com').contact-link
+        .icon
+          include icons/envelop.svg
+        span.email thebeuschers@windermere.com
+  nav.main-nav
+    for item in menudata
+      a(href=item.url, class=item.classname)= item.label

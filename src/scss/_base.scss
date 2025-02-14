@@ -1,46 +1,41 @@
-@include no-padding("left");
-@include no-padding("right");
-@include no-padding("top");
-@include no-padding("bottom");
-@include no-padding("all");
+@use "variables" as *;
+@use "sass-mixins" as *;
 
-ul.hmenu {
-  margin: 10px;
-  padding: 0;
-  list-style: none;
-  li {
-    display: inline-block;
-  }
-}
-.right {
-  text-align: right;
-}
-.padding-top {
-  padding-top: $gutter-width;
-}
-.padding-bottom {
-  padding-bottom: $gutter-width;
-}
+// Base styles
 body {
+  font-family: $body-font;
+  color: $body-text-color;
+  font-weight: 300;
+  background-size: cover;
+  background-position: fixed;
+
   h1,
   h2,
   h3,
   h4 {
     font-family: $header-font;
   }
-  font-family: $body-font;
-  color: $body-text-color;
-  font-weight: 300;
-  opacity: 1;
-  //background:url("/wp-content/themes/thebeuschers/images/bg-needle.jpg") no-repeat center;
-  background-size: cover;
-  background-position: fixed;
+
   a {
     text-decoration: none;
   }
 }
-a.button,
-button,
+
+// Utility classes
+.padding-top {
+  padding-top: $gutter-width;
+}
+.padding-bottom {
+  padding-bottom: $gutter-width;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+
+// Button styles
 .button {
   background: $green;
   color: $off-white;
@@ -49,72 +44,67 @@ button,
   transition: all 0.25s ease-in;
   border: 1px solid transparent;
   border-radius: 3px;
-  &.cta {
-    margin-top: 1em;
-  }
-  &.bottom-cta {
-    padding: 0.25em 0.5em;
-    font-size: 0.9em;
-    margin: 0 0.5em;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
+
   &:hover {
     border-color: $light-blue;
     background: $light-blue;
     color: $white;
   }
+
   &.main {
     font-size: 1.2em;
-
     box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+
     &:hover {
       box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.7);
     }
   }
-}
-.centered {
-  text-align: center;
-}
-.marquee {
-  padding-bottom: 20%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: $white;
-  background-position: bottom center;
-  .container {
-    padding-top: 5em;
-    text-align: center;
+
+  &.cta {
+    margin-top: 1em;
   }
-  h1,
-  h2 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+
+  &.bottom-cta {
+    padding: 0.25em 0.5em;
+    font-size: 0.9em;
+    margin: 0 0.5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
+
+// Content sections
 .content {
-  padding: 4em 0;
+  padding: 4rem 0;
+
   &.home {
     padding-top: 0;
   }
-  &.blog {
-    .container {
-      padding-top: 0;
-      padding-bottom: 0;
-    }
+
+  &.blog .container {
+    padding: 0;
   }
+
   &.open-house {
     font-size: 1.4em;
     line-height: 1.8;
   }
-  &.seller {
-    padding-bottom: 0;
-  }
+
   section {
+    .section-title {
+      color: #ccc;
+      font-size: 6rem;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0 0 0.5rem;
+    }
     &.purple {
       background: lighten($light-blue, 15%);
       color: $white;
     }
+
     .container {
       p,
       li,
@@ -125,25 +115,49 @@ button,
     }
   }
 }
-.caption {
-  p {
-    font-size: 0.8em;
-    line-height: 1;
-    margin: 0;
-    padding: 0;
+
+// CTA sections
+.cta-section {
+  background: $blue;
+  color: $white;
+  padding: $gutter-width 0;
+  text-align: center;
+}
+
+// Vendor styles
+.vendor {
+  h2 {
     text-align: center;
-    font-style: italic;
   }
 }
-ol.buying-tips {
+
+.vendor-tile {
+  display: inline-block;
+  width: 50%;
+  margin: 0 -3px $gutter-width * 2;
+  text-align: center;
+
+  .button {
+    margin-right: 1em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+// Buying tips list
+.buying-tips {
   list-style: none;
-  counter-reset: my-badass-counter;
+  counter-reset: tips-counter;
+
   li {
     position: relative;
     padding-bottom: $gutter-width;
+
     &:before {
-      content: counter(my-badass-counter);
-      counter-increment: my-badass-counter;
+      content: counter(tips-counter);
+      counter-increment: tips-counter;
       font-size: 2em;
       font-weight: 600;
       position: absolute;
@@ -153,33 +167,20 @@ ol.buying-tips {
       padding: 0 0.2em;
     }
   }
+
   h1 {
     color: darken($grey, 20%);
   }
 }
-section.cta {
-  background: $blue;
-  color: $white;
-  padding: $gutter-width 0;
-  text-align: center;
-  &.seller {
+
+// Caption styles
+.caption {
+  p {
+    font-size: 0.8em;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-style: italic;
   }
-}
-.vendor-tile {
-  display: inline-block;
-  width: 50%;
-  margin: 0 -3px $gutter-width * 2;
-  text-align: center;
-  .button {
-    margin-right: 1em;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-.vendor h2 {
-  text-align: center;
-}
-.row.no-margin {
-  margin: 0;
 }

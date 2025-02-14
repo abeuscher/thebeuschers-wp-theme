@@ -1,58 +1,186 @@
-.pic {
-  @include aspect-ratio(1, 1);
-  background-repeat: no-repeat;
-  background-size: cover;
-  &.align-right {
-    background-position: center;
-  }
-  &.align-left {
-    background-position: center;
-  }
-}
-.open-house-section {
-  background: $black;
+@use "variables" as *;
+@use "sass:math";
 
-  text-align: center;
+.home {
+  // Hero/Marquee Section
+  .marquee {
+    min-height: 80vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 
-  .thumbs {
-    max-width: 1280px;
-    margin: 0 auto;
-    @include bp(m) {
-      display: flex;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to right, rgba($black, 0.6), rgba($black, 0.2));
+    }
+
+    .marquee-content {
+      position: relative;
+      width: 100%;
+      max-width: 90rem;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .marquee-text {
+      max-width: 40rem;
+      margin-left: 50%;
+      color: $white;
+
+      @media (max-width: map-get($bps, "m")) {
+        margin-left: 0;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        margin-bottom: 2rem;
+      }
     }
   }
-  h2 {
-    color: $white;
-    margin: 0;
-    padding: 1em 0 2em;
+
+  // Open House Section
+  .open-house-section {
+    padding: 4rem 1rem;
+
+    .thumbs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+      gap: $gutter-width;
+      max-width: 90rem;
+      margin: 0 auto;
+    }
+
+    // Your updated open-house-thumb styles here
+    .open-house-thumb {
+      background: $off-white;
+      border-radius: 0.5rem;
+      padding: 2rem 2rem 3rem;
+      text-decoration: none;
+      color: $body-text-color;
+      box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.25);
+      transition:
+        transform $transition-speed ease,
+        background-color $transition-speed ease;
+      .thumb-image {
+        width: 100%;
+        padding-bottom: 56.25%;
+        margin-bottom: 2rem;
+      }
+      &:hover {
+        background: $off-white;
+        transform: translateY(-0.5rem);
+        box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+      }
+
+      h3 {
+        margin: 0 0 1rem;
+      }
+
+      .more-link {
+        color: $body-link-color;
+        margin: 1rem 0 0;
+      }
+    }
   }
-  .open-house-thumb {
-    border-radius: 5px;
-    background: $white;
-    display: inline-block;
-    width: 90%;
-    padding: 2em 2.5%;
-    margin: 0 auto $gutter-width;
-    @include nice-transition();
-    .thumb-image {
-      width: 100%;
-      padding-bottom: 66.66%;
+
+  // Testimonials Section
+  .testimonial-wrapper {
+    padding: 4rem 0;
+    background: $off-white;
+    position: relative;
+    .testimonial-content {
+      max-width: 60rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .testimonial {
+      text-align: center;
+      padding: 2rem;
+
+      cite {
+        display: block;
+        margin-top: 1.5rem;
+        font-style: italic;
+      }
+    }
+  }
+
+  // Content Sections
+  .content-section {
+    padding: 4rem 0;
+
+    .section-content {
+      max-width: 90rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .split-content {
+      display: grid;
+      gap: 2rem;
+
+      @media (min-width: map-get($bps, "m")) {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .pic {
+      aspect-ratio: 1;
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center;
-      border-radius: 5px;
+      border-radius: 0.5rem;
+      width: 100%;
     }
-    @include bp(m) {
-      width: 30%;
-      margin: 0 calc($gutter-width/2) $gutter-width;
+
+    .text-content {
+      h2 {
+        margin: 0 0 1rem;
+      }
+
+      h3 {
+        margin: 0 0 2rem;
+      }
     }
-    &:hover {
-      background: $off-white;
-      transform: translateY(-5px);
+
+    .full-width {
+      max-width: 60rem;
+      margin: 0 auto;
+      text-align: center;
     }
+  }
+
+  // Section Background Colors
+  .light {
+    background: $white;
+  }
+
+  .dark {
+    background: $off-white;
+    color: $body-text-color;
   }
 }
 
-/*
-<a target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&amp;tmeid=NWJlOGRuYWY3MTdsZzNicmczcjEzdnNhbGUgYWxleGJldXNjaGVyQG0&amp;tmsrc=alexbeuscher%40gmail.com"><img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en.gif"></a>
-*/
+// Swiper Overrides
+.swiper-button-next,
+.swiper-button-prev {
+  color: $body-text-color;
+}
+
+.swiper-pagination-bullet {
+  background: $body-text-color;
+}

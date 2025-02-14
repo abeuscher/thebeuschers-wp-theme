@@ -1,9 +1,11 @@
-$header-bg-color:#142850;
-$header-text-color:white;
-$article-bg-color:#27496d;
-$article-text-color:white;
-$button-text-color:white;
-$button-text-hover-color:#00a8cc;
+@use "variables" as *;
+@use "sass-mixins" as *;
+$header-bg-color: #142850;
+$header-text-color: white;
+$article-bg-color: #27496d;
+$article-text-color: white;
+$button-text-color: white;
+$button-text-hover-color: #00a8cc;
 
 .landing-page {
   margin: 0;
@@ -57,11 +59,11 @@ $button-text-hover-color:#00a8cc;
     }
   }
   header {
-    padding:0 0 75px;
+    padding: 0 0 75px;
     @include bp(s) {
       padding: 75px 0;
     }
-   
+
     background: $header-bg-color;
     text-align: center;
     color: $header-text-color;
@@ -90,7 +92,7 @@ $button-text-hover-color:#00a8cc;
     padding: 0;
     max-width: 404px;
     width: 100%;
-    height:auto;
+    height: auto;
     background: white;
     #logo-facepic {
       flex-basis: 37.5%;
@@ -100,7 +102,7 @@ $button-text-hover-color:#00a8cc;
     }
     img {
       width: 62.5%;
-      height:auto;
+      height: auto;
     }
   }
 }
