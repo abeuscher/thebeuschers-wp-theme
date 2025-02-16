@@ -37,17 +37,17 @@ body {
 
 // Button styles
 .button {
-  background: $green;
+  background: $gray-blue;
   color: $off-white;
   padding: 0.75em 1.5em;
   display: inline-block;
   transition: all 0.25s ease-in;
   border: 1px solid transparent;
-  border-radius: 3px;
+  border-radius: 5px;
 
   &:hover {
     border-color: $light-blue;
-    background: $light-blue;
+    background: $off-black;
     color: $white;
   }
 

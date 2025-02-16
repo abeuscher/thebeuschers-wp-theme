@@ -97,7 +97,7 @@
 
   // Testimonials Section
   .testimonial-wrapper {
-    padding: 4rem 0;
+    padding: 2rem 0;
     background: $off-white;
     position: relative;
     .testimonial-content {
@@ -121,7 +121,7 @@
   // Content Sections
   .content-section {
     padding: 4rem 0;
-
+    font-size: 1.25rem;
     .section-content {
       max-width: 90rem;
       margin: 0 auto;
@@ -148,6 +148,12 @@
     }
 
     .text-content {
+      h2,
+      h3 {
+        color: #717073;
+        text-transform: uppercase;
+        font-weight: normal;
+      }
       h2 {
         margin: 0 0 1rem;
       }

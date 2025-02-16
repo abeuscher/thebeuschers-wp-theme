@@ -1,12 +1,12 @@
 @use "variables" as *;
 @use "sass:math";
 
-.main {
+footer.main {
   text-align: center;
-
+  background: #494949;
   .footer-top {
     padding: 4rem 0;
-    background: $light-blue;
+
     color: $white;
     display: flex;
     flex-direction: column;
@@ -64,16 +64,11 @@
 
         .icon {
           margin-right: 0.5rem;
-          width: $icon-size;
-          height: $icon-size;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
+          .inner {
+            background: white;
+          }
           svg {
-            width: $icon-inner-size;
-            height: $icon-inner-size;
-            fill: currentColor;
+            fill: black;
           }
         }
       }
@@ -89,7 +84,6 @@
 
   .footer-bottom {
     padding: 3rem 0 4rem;
-    background: $blue;
     color: $white;
 
     p {
@@ -100,7 +94,7 @@
 }
 
 @media (max-width: map-get($bps, "s")) {
-  .main {
+  footer.main {
     .footer-top {
       padding: 3rem 1rem;
 
