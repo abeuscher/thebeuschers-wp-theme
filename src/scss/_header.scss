@@ -14,6 +14,7 @@ header.main {
     align-items: center;
     padding: 0 1.5rem;
     flex: 1;
+    z-index: 2;
   }
 
   .windermere-logo {
@@ -30,8 +31,9 @@ header.main {
   .logo {
     svg {
       background: white;
-      width: auto;
-      height: $header-height - $nav-height;
+      width: 90%;
+      margin: 0 5%;
+      height: auto;
     }
 
     // SVG Logo styles
@@ -95,6 +97,7 @@ header.main {
     width: 100%;
     padding: 0.5rem 0;
     height: $nav-height;
+    z-index: 1;
     a {
       font-size: 1rem;
       padding: 1.25rem 0.625rem;
@@ -115,7 +118,7 @@ header.main {
       }
 
       &:hover {
-        color: $link-hover-color;
+        color: $off-black;
 
         &::after {
           width: 100%;
@@ -127,37 +130,136 @@ header.main {
       }
     }
   }
+
+  /* Hamburger Menu Styles */
+  .menu-toggle {
+    display: none;
+  }
+
+  .hamburger-icon {
+    display: none;
+    cursor: pointer;
+    width: 30px;
+    height: 24px;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+
+    span {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background: #333;
+      border-radius: 3px;
+      transition: all 0.25s ease-in-out;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 10px;
+      }
+
+      &:nth-child(3) {
+        top: 20px;
+      }
+    }
+  }
 }
 
 @media (max-width: $mobile-breakpoint) {
   header.main {
     height: $header-height-mobile;
+    position: relative;
 
     .header-top {
       padding: 0 1rem;
+      justify-content: space-between;
     }
 
-    .windermere-logo img {
-      width: 140px;
+    .windermere-logo {
+      img {
+        width: 120px;
+      }
+    }
+
+    .logo {
+      width: 50%;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .contact-block {
       display: none;
     }
 
+    /* Hamburger Menu Toggle */
+    .menu-toggle {
+      display: none;
+
+      &:checked {
+        ~ .hamburger-icon {
+          span {
+            &:nth-child(1) {
+              top: 10px;
+              transform: rotate(135deg);
+            }
+
+            &:nth-child(2) {
+              opacity: 0;
+              transform: rotate(135deg);
+            }
+
+            &:nth-child(3) {
+              top: 10px;
+              transform: rotate(-135deg);
+            }
+          }
+        }
+
+        ~ .main-nav {
+          transform: translateY(0);
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    .hamburger-icon {
+      display: block;
+    }
+
     .main-nav {
       position: fixed;
-      bottom: 0;
+      top: $header-height-mobile;
       left: 0;
+      width: 100%;
       background: rgba(255, 255, 255, 0.95);
-      padding: 0.5rem;
-      justify-content: space-around;
+      padding: 1rem 0;
+      flex-direction: column;
+      align-items: center;
+      //transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      height: auto;
 
       a {
-        padding: 0.75rem 0.5rem;
-        font-size: 0.875rem;
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
 
         &::after {
+          display: none;
           bottom: 0.5rem;
         }
       }

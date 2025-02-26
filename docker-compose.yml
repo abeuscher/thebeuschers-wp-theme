@@ -2,6 +2,11 @@ version: "3"
 
 services:
   webserver:
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
     networks:
       - thebeuschersnet
     build: 
@@ -15,7 +20,7 @@ services:
     links:
       - beuschermysql
     volumes: 
-      - ${DOCUMENT_ROOT-./public_html}:/var/www/thebeuschers.local/public_html
+      - ${DOCUMENT_ROOT-./public_html}:/var/www/thebeuschers.local/public_html:cached
       - ${PHP_INI-./config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./config/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./logs/apache2}:/var/log/apache2

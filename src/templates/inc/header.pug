@@ -4,8 +4,8 @@ header.main
   .header-top
     .windermere-logo
       img(src=themeDir + "images/windmere-logo.png" alt="Windermere Logo")
-    .logo
-      include icons/logo.svg
+    a.logo(href="/")
+      include icons/logonew.svg
     .contact-block
       a(href='tel:1-206-409-2244').contact-link
         .icon
@@ -15,6 +15,13 @@ header.main
         .icon
           include icons/envelop.svg
         span.email thebeuschers@windermere.com
+
+  // These three elements must be siblings for the CSS selectors to work
+  input(type="checkbox" id="menu-toggle").menu-toggle
+  label(for="menu-toggle").hamburger-icon
+    span
+    span
+    span
   nav.main-nav
     for item in menudata
       a(href=item.url, class=item.classname)= item.label

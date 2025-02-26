@@ -2,11 +2,12 @@
 @use "sass-mixins" as *;
 
 .carousel-title {
-  background: $black;
-  color: $white;
   text-align: center;
+  margin: 3em 0 1em;
   h1 {
     font-size: 20px;
+    text-transform: uppercase;
+    color: $off-black;
     @include bp(m) {
       font-size: 32px;
     }
@@ -14,17 +15,18 @@
 }
 
 .carousel-wrapper {
-  background: $black;
-
   .swiper-pagination-bullet {
-    background: $white;
+    background: $off-black;
+  }
+  .swiper-container {
+    padding: 0;
   }
   .swiper-wrapper {
     padding-bottom: 3em;
   }
   .swiper-button-prev,
   .swiper-button-next {
-    color: $white;
+    color: $blue;
     transform: translateY(-50px);
   }
   .swiper-button-prev {
@@ -49,15 +51,16 @@
       bottom: -50px;
       right: 0;
       left: 0;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(255, 255, 255, 0.7);
       height: 50px;
       @include nice-transition();
       p {
-        color: $white;
         text-align: center;
-        font-size: 14px;
+        font-size: 0.8rem;
         line-height: 1;
         font-style: normal;
+        color: $off-black;
+        opacity: 0.8;
       }
       @include bp(m) {
         display: block;
