@@ -37,26 +37,26 @@ body {
 
 // Button styles
 .button {
-  background: $gray-blue;
-  color: $off-white;
-  padding: 0.75em 1.5em;
+  background: #ccc;
+  color: $off-black;
+  padding: 0.5em 1.5em;
   display: inline-block;
-  transition: all 0.25s ease-in;
+  transition: all 0.3s ease-in-out; // Smoother transition
   border: 1px solid transparent;
-  border-radius: 5px;
+  border-radius: 2em;
 
   &:hover {
-    border-color: $light-blue;
-    background: $off-black;
+    border-color: #999; // Light gray border instead of light-blue
+    background: #666; // Darker gray on hover instead of off-black
     color: $white;
   }
 
   &.main {
     font-size: 1.2em;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); // Softer shadow
 
     &:hover {
-      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.7);
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3); // Softer shadow on hover
     }
   }
 

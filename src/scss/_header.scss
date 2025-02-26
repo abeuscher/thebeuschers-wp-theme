@@ -266,3 +266,28 @@ header.main {
     }
   }
 }
+.social-links {
+  display: none;
+}
+@media (min-width: $mobile-breakpoint) {
+  .social-links {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    a {
+      display: inline-block;
+      padding: 0.1em;
+      margin: 0 0.5em 0 0;
+      border-radius: 50%;
+      svg {
+        fill: $off-black;
+      }
+      &:hover {
+        background: $off-black;
+        svg {
+          fill: white;
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,19 @@ header.main
   .header-top
     .windermere-logo
       img(src=themeDir + "images/windmere-logo.png" alt="Windermere Logo")
+      .social-links
+        a(href='https://www.facebook.com/TheBeuschers/')
+          .icon
+            .inner
+              include icons/facebook.svg
+        a(href='https://www.youtube.com/channel/UCJrgtcobqCglLqUUUK1t0XQ?app=desktop')
+          .icon
+            .inner
+              include icons/youtube.svg
+        a(href='https://www.instagram.com/thebeuschers.re/')
+          .icon
+            .inner
+              include icons/instagram.svg
     a.logo(href="/")
       include icons/logonew.svg
     .contact-block
@@ -15,7 +28,6 @@ header.main
         .icon
           include icons/envelop.svg
         span.email thebeuschers@windermere.com
-
   // These three elements must be siblings for the CSS selectors to work
   input(type="checkbox" id="menu-toggle").menu-toggle
   label(for="menu-toggle").hamburger-icon
