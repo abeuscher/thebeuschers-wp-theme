@@ -50,7 +50,10 @@ function activateImages() {
     if (isElement(backgroundObjects[i])) {
       thisElement = backgroundObjects[i];
       var imageObj = JSON.parse(thisElement.getAttribute("data-bg-object"));
-      thisElement.style.backgroundImage = "url('" + imageObj.url + "')";
+      console.log(imageObj);
+      thisElement.style.backgroundImage = imageObj.sizes
+        ? "url('" + imageObj.sizes.large + "')"
+        : "url('" + imageObj.url + "')";
     }
   }
   for (i in backgroundImages) {
