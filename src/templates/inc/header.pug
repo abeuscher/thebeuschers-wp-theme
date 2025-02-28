@@ -1,6 +1,10 @@
 include ./menu-data
-
-header.main
+-
+  if (typeof siteurl === "undefined") {
+    siteurl = "/"
+  }
+- var headerClass = locals.isEmbedded ? 'main beuscher embedded-header' : 'main beuscher'
+header(class=headerClass)
   .header-top
     .windermere-logo
       img(src=themeDir + "images/windmere-logo.png" alt="Windermere Logo")
@@ -17,7 +21,7 @@ header.main
           .icon
             .inner
               include icons/instagram.svg
-    a.logo(href="/")
+    a.logo(href=siteurl)
       include icons/logonew.svg
     .contact-block
       a(href='tel:1-206-409-2244').contact-link

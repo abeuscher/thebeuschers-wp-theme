@@ -26,7 +26,6 @@ function activateCarousels() {
   let currentCarousels = [];
   let carousels = document.querySelectorAll(".carousel .swiper");
   carousels.forEach((carousel, idx) => {
-    console.log("Init carousel", carousel);
     currentCarousels[idx] = new Swiper(carousel, {
       autoplay: {
         delay: 5000,
@@ -50,7 +49,6 @@ function activateImages() {
     if (isElement(backgroundObjects[i])) {
       thisElement = backgroundObjects[i];
       var imageObj = JSON.parse(thisElement.getAttribute("data-bg-object"));
-      console.log(imageObj);
       thisElement.style.backgroundImage = imageObj.sizes
         ? "url('" + imageObj.sizes.large + "')"
         : "url('" + imageObj.url + "')";

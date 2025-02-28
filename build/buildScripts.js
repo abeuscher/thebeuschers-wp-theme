@@ -56,7 +56,7 @@ const buildScripts = (siteSettings) => {
 
   // Build embed-nav.js separately
   const navEntryPoint = path.join(siteSettings.jsFiles[0].srcDir, "embed-nav.js");
-  const navOutfile = path.join(siteSettings.jsFiles[0].buildDir, "embed-nav.js");
+  const navOutfile = path.join(siteSettings.jsFiles[0].buildDir, "embed.min.js");
 
   console.log(`Building navigation script: ${navOutfile}`);
   const navBuild = esbuild.build({

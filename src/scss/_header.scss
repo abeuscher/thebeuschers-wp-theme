@@ -1,13 +1,12 @@
 @use "variables" as *;
 
-header.main {
+header.main.beuscher {
   height: $header-height;
   display: flex;
   flex-direction: column;
   background: rgba(255, 255, 255, 1);
   position: relative;
   z-index: 1000;
-
   .header-top {
     display: flex;
     justify-content: space-between;
@@ -51,6 +50,7 @@ header.main {
       display: flex;
       align-items: center;
       color: #333;
+      font-size: 14px;
       transition: $header-transition;
 
       &:hover {
@@ -64,10 +64,6 @@ header.main {
 
       span {
         margin-left: 0.5rem;
-
-        &.email {
-          font-size: 0.875rem;
-        }
       }
     }
 
@@ -99,12 +95,13 @@ header.main {
     height: $nav-height;
     z-index: 1;
     a {
-      font-size: 1rem;
+      font-size: 16px;
       padding: 1.25rem 0.625rem;
       color: $header-color;
       position: relative;
       transition: $header-transition;
-
+      line-height: 1;
+      display: inline-block;
       &::after {
         content: "";
         position: absolute;
@@ -119,7 +116,7 @@ header.main {
 
       &:hover {
         color: $off-black;
-
+        text-decoration: none;
         &::after {
           width: 100%;
         }
@@ -169,10 +166,16 @@ header.main {
       }
     }
   }
+  &.embedded-header {
+    height: auto;
+    .main-nav {
+      height: auto;
+    }
+  }
 }
 
 @media (max-width: $mobile-breakpoint) {
-  header.main {
+  header.main.beuscher {
     height: $header-height-mobile;
     position: relative;
 

@@ -4,7 +4,7 @@ Theme URI: https://thebeuschers.com
 Author: Al Beuscher
 Author URI: http://alexbeuscher.com/
 Description: Theme for thebeuschers.com
-Version: 1.2.0
+Version: 2.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: thebeuschers
@@ -26,3 +26,4 @@ Text Domain: thebeuschers
 @use "./_open-house.scss";
 @use "./_layout.scss";
 @use "./_base.scss";
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
