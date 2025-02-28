@@ -1,0 +1,29 @@
+@use "variables" as *;
+@use "sass-mixins" as *;
+
+// Buying tips list
+.buying-tips {
+  list-style: none;
+  counter-reset: tips-counter;
+
+  li {
+    position: relative;
+    padding-bottom: $gutter-width;
+
+    &:before {
+      content: counter(tips-counter);
+      counter-increment: tips-counter;
+      font-size: 2em;
+      font-weight: 600;
+      position: absolute;
+      background: darken($grey, 20%);
+      color: $white;
+      left: -1.25em;
+      padding: 0 0.2em;
+    }
+  }
+
+  h1 {
+    color: darken($grey, 20%);
+  }
+}

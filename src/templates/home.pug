@@ -5,7 +5,7 @@ block template
     Template Name: Home Page
     */
 block content
-  article.content.home
+  article.content-main.home
     :php
       $page_block = "";
       $pages = get_pages(array(
@@ -64,7 +64,7 @@ block content
       foreach(get_field("sections") as $key=>$section) {
         $section_class = $section["background_color"] . " content-section padding-top";
         echo "<section class='" . $section_class . "'>";
-    .section-content
+    .content
       :php
         $headers = $section["section_headline"] != "" ? "<h2>" . $section["section_headline"] . "</h2>" : "";
         $headers = $section["section_subhead"] != "" ? $headers . "<h3>" . $section["section_subhead"] . "</h3>" : $headers; 

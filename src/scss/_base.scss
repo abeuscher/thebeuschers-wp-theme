@@ -1,7 +1,9 @@
 @use "variables" as *;
 @use "sass-mixins" as *;
 
+// ===================================
 // Base styles
+// ===================================
 body {
   font-family: $body-font;
   color: $body-text-color;
@@ -21,42 +23,49 @@ body {
   }
 }
 
+// ===================================
 // Utility classes
+// ===================================
 .padding-top {
   padding-top: $gutter-width;
 }
+
 .padding-bottom {
   padding-bottom: $gutter-width;
 }
+
 .text-right {
   text-align: right;
 }
+
 .text-center {
   text-align: center;
 }
 
+// ===================================
 // Button styles
+// ===================================
 .button {
   background: #ccc;
   color: $off-black;
   padding: 0.5em 1.5em;
   display: inline-block;
-  transition: all 0.3s ease-in-out; // Smoother transition
+  transition: all 0.3s ease-in-out;
   border: 1px solid transparent;
   border-radius: 2em;
 
   &:hover {
-    border-color: #999; // Light gray border instead of light-blue
-    background: #666; // Darker gray on hover instead of off-black
+    border-color: #999;
+    background: #666;
     color: $white;
   }
 
   &.main {
     font-size: 1.2em;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2); // Softer shadow
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
 
     &:hover {
-      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3); // Softer shadow on hover
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
     }
   }
 
@@ -75,109 +84,9 @@ body {
   }
 }
 
-// Content sections
-.content {
-  padding: 4rem 0;
-
-  &.home {
-    padding-top: 0;
-  }
-
-  &.blog .container {
-    padding: 0;
-  }
-
-  &.open-house {
-    font-size: 1.4em;
-    line-height: 1.8;
-  }
-
-  section {
-    .section-title {
-      color: #ccc;
-      font-size: 6rem;
-      text-align: center;
-      text-transform: uppercase;
-      margin: 0 0 0.5rem;
-    }
-    &.purple {
-      background: lighten($light-blue, 15%);
-      color: $white;
-    }
-
-    .container {
-      p,
-      li,
-      .usercontent {
-        font-size: 1.2em;
-        line-height: 1.5;
-      }
-    }
-  }
-}
-
-// CTA sections
-.cta-section {
-  background: $blue;
-  color: $white;
-  padding: $gutter-width 0;
-  text-align: center;
-}
-
-// Vendor styles
-.vendor {
-  h2 {
-    text-align: center;
-  }
-}
-
-.vendor-tile {
-  display: inline-block;
-  width: 50%;
-  margin: 0 -3px $gutter-width * 2;
-  text-align: center;
-  img {
-    max-width: 400px;
-    max-height: 300px;
-  }
-
-  .button {
-    margin-right: 1em;
-
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-}
-
-// Buying tips list
-.buying-tips {
-  list-style: none;
-  counter-reset: tips-counter;
-
-  li {
-    position: relative;
-    padding-bottom: $gutter-width;
-
-    &:before {
-      content: counter(tips-counter);
-      counter-increment: tips-counter;
-      font-size: 2em;
-      font-weight: 600;
-      position: absolute;
-      background: darken($grey, 20%);
-      color: $white;
-      left: -1.25em;
-      padding: 0 0.2em;
-    }
-  }
-
-  h1 {
-    color: darken($grey, 20%);
-  }
-}
-
+// ===================================
 // Caption styles
+// ===================================
 .caption {
   p {
     font-size: 0.8em;

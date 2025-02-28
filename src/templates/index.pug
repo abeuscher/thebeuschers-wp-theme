@@ -5,22 +5,15 @@ block template
     Template Name: Page
     */
 block content
-  .content
-    section
-      .container
-        .row
-          .col-md-12
-            h1
-              :php
-                the_title();
-    section#main-content
-      .container
-        :php
-          if( have_posts() ): while( have_posts() ): the_post();
-        article.blog-post
-          .blog-post-body
+  article.content-main
+    section.content-section
+      .content
+        .full-width
+          h1.section-title
             :php
+              the_title();
+          :php
+            if( have_posts() ): while( have_posts() ): the_post();
               the_content();
-        :php
-          endwhile;
-          endif;
+            endwhile;
+            endif;

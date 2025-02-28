@@ -9,17 +9,18 @@ block content
         if( have_posts() ) {
             while( have_posts() ) {
                 the_post();
-    .content
-        section
-            .container
-                .row
-                    .col-md-12
-                        h1
-    section.sales.padding-bottom
-        .container
-            .row
+    article.content-main
+        section.content-section
+            .content
+                .full-width
+                    h1
+                        :php
+                            the_title();
+    section.content-section.sales.padding-bottom
+        .content
+            .sales-grid
                 :php
                     foreach(get_field("previous_sales") as $key=>$sale) {
-                        printf("<div class='col-md-4 history-block'><div class='history-thumb' data-bg-object='%s'></div><div class='wysiwyg'>%s</div></div>", json_encode($sale["thumb_image"], JSON_UNESCAPED_SLASHES), $sale["house_info"]);
+                        printf("<div class='sales-item'><div class='history-thumb' data-bg-object='%s'></div><div class='wysiwyg'>%s</div></div>", json_encode($sale["thumb_image"], JSON_UNESCAPED_SLASHES), $sale["house_info"]);
                     }
                         }}

@@ -2,54 +2,6 @@
 @use "sass:math";
 
 .home {
-  // Hero/Marquee Section
-  .marquee {
-    min-height: 80vh;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to right, rgba($black, 0.6), rgba($black, 0.2));
-    }
-
-    .marquee-content {
-      position: relative;
-      width: 100%;
-      max-width: 90rem;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .marquee-text {
-      max-width: 40rem;
-      margin-left: 50%;
-      color: $white;
-
-      @media (max-width: map-get($bps, "m")) {
-        margin-left: 0;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        margin-bottom: 1rem;
-      }
-
-      h2 {
-        font-size: clamp(1.25rem, 3vw, 2rem);
-        margin-bottom: 2rem;
-      }
-    }
-  }
-
   // Open House Section
   .open-house-section {
     padding: 4rem 1rem;
@@ -62,7 +14,6 @@
       margin: 0 auto;
     }
 
-    // Your updated open-house-thumb styles here
     .open-house-thumb {
       background: $off-white;
       border-radius: 0.5rem;
@@ -73,12 +24,14 @@
       transition:
         transform $transition-speed ease,
         background-color $transition-speed ease;
+
       .thumb-image {
         width: 100%;
         padding-bottom: 56.25%;
         margin-bottom: 2rem;
         background-size: cover;
       }
+
       &:hover {
         background: $off-white;
         transform: translateY(-0.5rem);
@@ -99,8 +52,11 @@
   // Testimonials Section
   .testimonial-wrapper {
     padding: 2rem 0;
-    background: $off-white;
+    background: $gray-hatband;
+    color: $off-white;
     position: relative;
+    margin-bottom: 100px;
+
     .testimonial-content {
       max-width: 60rem;
       margin: 0 auto;
@@ -109,7 +65,13 @@
 
     .testimonial {
       text-align: center;
-      padding: 2rem;
+      padding: $gutter-width $gutter-width ($gutter-width * 1.8);
+      background: lighten($light-blue, 25%);
+      color: $off-black;
+      height: 100%;
+      width: 80%;
+      margin: 0 10%;
+      font-size: 1.2rem;
 
       cite {
         display: block;
@@ -117,57 +79,18 @@
         font-style: italic;
       }
     }
-  }
 
-  // Content Sections
-  .content-section {
-    padding: 4rem 0;
-    font-size: 1.25rem;
-    .section-content {
-      max-width: 90rem;
-      margin: 0 auto;
-      padding: 0 2rem;
+    .swiper-button-prev,
+    .swiper-button-next {
+      margin-top: -2em;
+      color: white;
     }
 
-    .split-content {
-      display: grid;
-      gap: 2rem;
-
-      @media (min-width: map-get($bps, "m")) {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-      }
-    }
-
-    .pic {
-      aspect-ratio: 1;
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      border-radius: 0.5rem;
-      width: 100%;
-    }
-
-    .text-content {
-      h2,
-      h3 {
-        color: #717073;
-        text-transform: uppercase;
-        font-weight: normal;
-      }
-      h2 {
-        margin: 0 0 1rem;
-      }
-
-      h3 {
-        margin: 0 0 2rem;
-      }
-    }
-
-    .full-width {
-      max-width: 60rem;
-      margin: 0 auto;
-      text-align: center;
+    .swiper-slide {
+      display: flex;
+      height: auto;
+      justify-content: center;
+      flex-direction: column;
     }
   }
 
@@ -182,12 +105,16 @@
   }
 }
 
-// Swiper Overrides
+// Swiper Overrides - moved outside .home for global application
+.swiper-container {
+  padding: 3em 0;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: $body-text-color;
 }
 
 .swiper-pagination-bullet {
-  background: $body-text-color;
+  background: $off-white;
 }

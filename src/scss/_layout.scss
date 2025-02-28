@@ -1,0 +1,119 @@
+@use "variables" as *;
+@use "sass-mixins" as *;
+
+// ===================================
+// Content & Section Layouts
+// ===================================
+// Main content area wrapper
+.content-main {
+  padding: 4rem 0;
+
+  &.not-found {
+    .text-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: $gutter-width 0;
+    }
+  }
+}
+
+// Max-width enforcer
+.content {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+// Section title
+.section-title {
+  color: #ccc;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+
+  @include bp(s) {
+    font-size: 4rem;
+  }
+
+  @include bp(m) {
+    font-size: 6rem;
+  }
+}
+
+// Section container
+.content-section {
+  padding: 4rem 0;
+  font-size: 1.25rem;
+
+  &.purple {
+    background: lighten($light-blue, 15%);
+    color: $white;
+  }
+
+  // Two-column grid
+  .split-content {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: map-get($bps, "m")) {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+
+  .pic {
+    aspect-ratio: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0.5rem;
+    width: 100%;
+  }
+
+  // Text content block
+  .text-content {
+    h2,
+    h3 {
+      color: #717073;
+      text-transform: uppercase;
+      font-weight: normal;
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+    }
+
+    h3 {
+      margin: 0 0 2rem;
+    }
+  }
+
+  // Content meant to be centered stylistically
+  .text-center-block {
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  // Legacy class - simple margin, no constraints
+  .full-width {
+    margin: 0 auto $gutter-width;
+  }
+}
+
+// ===================================
+// CTA Section
+// ===================================
+.cta-section {
+  padding: $gutter-width 0;
+  text-align: center;
+
+  .content {
+    max-width: 60rem;
+  }
+
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+}

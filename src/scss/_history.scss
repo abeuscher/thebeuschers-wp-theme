@@ -1,9 +1,28 @@
-.history-thumb {
-    background-size:cover;
-    &:after {
-        content:"";
-        padding-bottom:56.25%;
-        width:100%;
-        display:block;
+@use "variables" as *;
+@use "sass-mixins" as *;
+
+// Sales Page Styles
+.sales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $gutter-width;
+}
+
+.sales-item {
+  margin-bottom: $gutter-width;
+
+  .history-thumb {
+    width: 100%;
+    padding-bottom: 66.67%; // 3:2 aspect ratio
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+  }
+
+  .wysiwyg {
+    h3 {
+      margin-top: 0;
     }
+  }
 }

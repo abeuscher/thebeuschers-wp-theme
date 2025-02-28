@@ -1,6 +1,17 @@
 @use "variables" as *;
 @use "sass-mixins" as *;
 
+.content-main.open-house {
+  font-size: 1.4em;
+  line-height: 1.8;
+}
+
+.content-section.open-house {
+  margin-bottom: 2rem;
+  font-size: 1.4em;
+  line-height: 1.8;
+}
+
 // Carousel Title Section
 .carousel-section {
   text-align: center;

@@ -32,7 +32,7 @@ header.main {
     svg {
       background: white;
       width: 90%;
-      margin: 0 5%;
+      padding: 5%;
       height: auto;
     }
 
@@ -189,7 +189,7 @@ header.main {
 
     .logo {
       width: 50%;
-      margin: 0 auto;
+      margin: 10px auto;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -275,10 +275,14 @@ header.main {
     width: 100%;
     justify-content: space-evenly;
     a {
-      display: inline-block;
-      padding: 0.1em;
+      display: inline-flex;
+      padding: 0;
       margin: 0 0.5em 0 0;
       border-radius: 50%;
+      justify-content: center;
+      align-items: center;
+      width: 36px;
+      height: 36px;
       svg {
         fill: $off-black;
       }
