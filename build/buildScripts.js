@@ -29,28 +29,51 @@ const pluginPug = () => ({
 });
 
 const buildScripts = (siteSettings) => {
-  console.log("Writing theme script file");
-
-  const jsFile = siteSettings.jsFiles[0];
-  const entryPoint = path.join(jsFile.srcDir, jsFile.srcFileName);
-  const outfile = path.join(jsFile.buildDir, jsFile.buildFileName);
+  console.log("Building script files");
 
   // Ensure the output directory exists
-  const outputDir = path.dirname(outfile);
+  const outputDir = path.dirname(
+    path.join(siteSettings.jsFiles[0].buildDir, siteSettings.jsFiles[0].buildFileName),
+  );
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  esbuild.build({
-    entryPoints: [entryPoint],
+  // Build main app.js
+  const mainJsFile = siteSettings.jsFiles[0];
+  const mainEntryPoint = path.join(mainJsFile.srcDir, mainJsFile.srcFileName);
+  const mainOutfile = path.join(mainJsFile.buildDir, mainJsFile.buildFileName);
+
+  console.log(`Building main script: ${mainOutfile}`);
+  const mainBuild = esbuild.build({
+    entryPoints: [mainEntryPoint],
     bundle: true,
     minify: true,
-    outfile: outfile,
+    outfile: mainOutfile,
     platform: "browser",
     plugins: [pluginPug()],
-  })
+  });
+
+  // Build embed-nav.js separately
+  const navEntryPoint = path.join(siteSettings.jsFiles[0].srcDir, "embed-nav.js");
+  const navOutfile = path.join(siteSettings.jsFiles[0].buildDir, "embed-nav.js");
+
+  console.log(`Building navigation script: ${navOutfile}`);
+  const navBuild = esbuild.build({
+    entryPoints: [navEntryPoint],
+    bundle: true,
+    minify: true,
+    outfile: navOutfile,
+    platform: "browser",
+    plugins: [pluginPug()],
+  });
+
+  // Wait for both builds to complete
+  Promise.all([mainBuild, navBuild])
     .then(() => {
-      console.log(`Scripts built successfully. Output: ${outfile}`);
+      console.log(`Scripts built successfully.`);
+      console.log(`Main output: ${mainOutfile}`);
+      console.log(`Nav output: ${navOutfile}`);
     })
     .catch((error) => {
       console.error("Error during script build:", error);

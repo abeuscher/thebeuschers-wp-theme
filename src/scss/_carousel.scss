@@ -10,7 +10,7 @@
     font-size: 20px;
     text-transform: uppercase;
     color: $off-black;
-    margin: 0;
+    margin: 50px auto 25px;
 
     @include bp(m) {
       font-size: 32px;
@@ -94,5 +94,35 @@
         opacity: 1;
       }
     }
+  }
+}
+
+// Swiper Overrides - global application
+.swiper-container {
+  padding: 3em 0;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: $body-text-color;
+}
+
+.swiper-pagination-bullet {
+  background: $off-white;
+}
+
+// Testimonial carousel overrides
+.testimonial-wrapper {
+  .swiper-button-prev,
+  .swiper-button-next {
+    margin-top: -2em;
+    color: white;
+  }
+
+  .swiper-slide {
+    display: flex;
+    height: auto;
+    justify-content: center;
+    flex-direction: column;
   }
 }

@@ -1,10 +1,30 @@
 const SiteHeader = require("../templates/inc/header.pug");
-const parseHTML = require("./utils/parse-html");
+const parseHTML = function (htmlString) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, "text/html");
+  return doc.body.firstChild;
+};
 
-let oldNav = document.querySelectorAll(".navbar-fixed-top")[0];
-oldNav.parentNode.style = "padding-top:0!important";
-// replace el with newEL
-oldNav.parentNode.replaceChild(
-  parseHTML(SiteHeader({ siteurl: "https://thebeuschers.com/" })),
-  oldNav,
-);
+document.addEventListener("DOMContentLoaded", function () {
+  const oldNav = document.querySelector(".navbar-fixed-top");
+
+  if (oldNav) {
+    // Remove top padding from parent container
+    if (oldNav.parentNode) {
+      oldNav.parentNode.style.paddingTop = "0";
+    }
+
+    try {
+      // Generate the new header HTML
+      const newHeaderHTML = SiteHeader({ siteurl: "https://thebeuschers.com/" });
+      // Convert to DOM element and replace old nav
+      const newHeader = parseHTML(newHeaderHTML);
+      oldNav.parentNode.replaceChild(newHeader, oldNav);
+      console.log("Navigation successfully replaced");
+    } catch (error) {
+      console.error("Error replacing navigation:", error);
+    }
+  } else {
+    console.warn("Navigation element (.navbar-fixed-top) not found");
+  }
+});
