@@ -45,6 +45,9 @@
 .content-section {
   padding: 4rem 0;
   font-size: 1.25rem;
+  &.low-padding {
+    padding: 2rem 0;
+  }
 
   &.purple {
     background: lighten($light-blue, 15%);

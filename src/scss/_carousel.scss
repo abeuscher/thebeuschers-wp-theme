@@ -28,6 +28,9 @@
 
   .swiper-container {
     padding: 0;
+    @include bp(m) {
+      padding: 0 15%;
+    }
   }
 
   .swiper-wrapper {
